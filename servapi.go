@@ -4,7 +4,6 @@ import (
 	"database/sql/driver"
 	"github.com/gorilla/mux"
 	"github.com/google/uuid"
-	"image"
 	"time"
 )
 const(
@@ -37,4 +36,12 @@ type APIServer struct{
 	config *ServerConfig
 	router *mux.Router
 	db *Database
+}
+
+func (server *APIServer) Start() error{
+	server.configureRouter()
+	server.db.Open()
+	}
+func (server *APIServer) configureRouter(){
+
 }
